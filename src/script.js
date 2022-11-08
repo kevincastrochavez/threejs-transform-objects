@@ -10,32 +10,29 @@ const scene = new THREE.Scene();
 /**
  * Objects
  */
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-const mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
 
-// POSITION
-// mesh.position.normalize(); // Results in 1
-// mesh.position.x = 0.7;
-// mesh.position.y = -0.6;
-// mesh.position.z = 1;
-// Same thing as above
-mesh.position.set(0.7, -0.6, 1);
+const group = new THREE.Group();
+scene.add(group);
 
-// SCALE
-// mesh.scale.x = 2;
-// mesh.scale.y = 0.5;
-// mesh.scale.z = 0.5;
-mesh.scale.set(2, 0.5, 0.5); // Same thing as above
+const cube1 = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial({ color: 0xff0000 })
+);
+const cube2 = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+);
+const cube3 = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial({ color: 0x0000ff })
+);
 
-// ROTATION
-mesh.rotation.reorder('YXZ');
-mesh.rotation.y = Math.PI / 4;
-mesh.rotation.x = Math.PI / 4;
+cube2.position.x = -2;
+cube3.position.x = 2;
 
-// Distance between the center of the scene and the object position
-console.log(mesh.position.length());
+scene.add(cube1);
+scene.add(cube2);
+scene.add(cube3);
 
 // Axes helper
 const axesHelper = new THREE.AxesHelper(2); // Creates the lines. Parameter is how long the lines should be
@@ -58,10 +55,10 @@ camera.position.y = 1;
 camera.position.x = 1;
 scene.add(camera);
 
-camera.lookAt(mesh.position); // This can be because it's a Vector3
+// camera.lookAt(mesh.position); // This can be because it's a Vector3
 
 // Distance between the camera and the object position
-console.log(mesh.position.distanceTo(camera.position));
+// console.log(mesh.position.distanceTo(camera.position));
 
 /**
  * Renderer
