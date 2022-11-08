@@ -26,6 +26,10 @@ console.log(mesh.position.length());
 
 scene.add(mesh);
 
+// Axes helper
+const axesHelper = new THREE.AxesHelper(2); // Creates the lines. Parameter is how long the lines should be
+scene.add(axesHelper);
+
 /**
  * Sizes
  */
@@ -38,7 +42,9 @@ const sizes = {
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
-camera.position.z = 3;
+camera.position.z = 4;
+camera.position.y = 1;
+camera.position.x = 1;
 scene.add(camera);
 
 // Distance between the camera and the object position
