@@ -29,6 +29,11 @@ mesh.position.set(0.7, -0.6, 1);
 // mesh.scale.z = 0.5;
 mesh.scale.set(2, 0.5, 0.5); // Same thing as above
 
+// ROTATION
+mesh.rotation.reorder('YXZ');
+mesh.rotation.y = Math.PI / 4;
+mesh.rotation.x = Math.PI / 4;
+
 // Distance between the center of the scene and the object position
 console.log(mesh.position.length());
 
@@ -52,6 +57,8 @@ camera.position.z = 4;
 camera.position.y = 1;
 camera.position.x = 1;
 scene.add(camera);
+
+camera.lookAt(mesh.position); // This can be because it's a Vector3
 
 // Distance between the camera and the object position
 console.log(mesh.position.distanceTo(camera.position));
